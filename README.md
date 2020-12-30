@@ -60,7 +60,9 @@ install go:
   copy go file to /usr/local       or  tar -C /usr/local -xzf go1.15.6.linux-amd64.tar.gz
 
   /etc/profile  (source /etc/profile)
+  /etc/bash.bashrc
   export PATH=$PATH:/usr/local/go/bin
+  export GOPROXY=https://goproxy.io
 
   go version
 
@@ -69,11 +71,22 @@ install build tools:
 
 build monero by shared lib:
   
+replace go mod:
+  go mod init github.com/b1f2e2ed66/monero
+  go build
+  replace github.com/sammy007/monero-stratum => ../monero-stratum
 
 build bin:
   mkdir cmake_build && cd cmake_build
   MONERO_DIR=/src/monero-shared-src/monero/ cmake ..
 
+  go build
+
+run :
+  copy www/ to /app
+  copy config.json to /app
+      (http 8082, stratum 13531)
+  monero-stratum config.json
 
 ### Mac OS X
 
