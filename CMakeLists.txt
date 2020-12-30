@@ -12,9 +12,9 @@ endif()
 add_subdirectory(hashing)
 add_subdirectory(cnutil)
 
-add_custom_command(
-    OUTPUT build/bin
-    COMMAND build/env.sh go get -v ./...
-)
-
-add_custom_target(build ALL DEPENDS hashing cnutil ${CMAKE_CURRENT_BINARY_DIR}/build/bin)
+#add_custom_command(
+#    OUTPUT build/bin
+#    COMMAND build/env.sh go get -v ./...
+#)
+#
+#add_custom_target(build ALL DEPENDS hashing cnutil ${CMAKE_CURRENT_BINARY_DIR}/build/bin)
