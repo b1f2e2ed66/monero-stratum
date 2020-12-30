@@ -10,15 +10,17 @@ include_directories("${MONERO_DIR}/contrib/epee/include")
 include_directories("${MONERO_DIR}/src")
 include_directories("${MONERO_DIR}/external/easylogging++")
 
+set(MONERO_LIB_DIR "${MONERO_DIR}/build/release-shared")
+
 link_directories(
-    ${MONERO_DIR}/src/cryptonote_core
-    ${MONERO_DIR}/src/cryptonote_basic
-    ${MONERO_DIR}/src/crypto
-    ${MONERO_DIR}/src/common
-    ${MONERO_DIR}/src/ringct
-    ${MONERO_DIR}/src/blockchain_db
-    ${MONERO_DIR}/external/easylogging++
-    ${MONERO_DIR}/contrib/epee/src
+    ${MONERO_LIB_DIR}/src/cryptonote_core
+    ${MONERO_LIB_DIR}/src/cryptonote_basic
+    ${MONERO_LIB_DIR}/src/crypto
+    ${MONERO_LIB_DIR}/src/common
+    ${MONERO_LIB_DIR}/src/ringct
+    ${MONERO_LIB_DIR}/src/blockchain_db
+    ${MONERO_LIB_DIR}/external/easylogging++
+    ${MONERO_LIB_DIR}/contrib/epee/src
 )
 
 # Build library
