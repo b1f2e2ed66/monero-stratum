@@ -54,6 +54,26 @@ Build stratum:
 
 `MONERO_DIR=/path/to/monero` is optional, not needed if both `monero` and `monero-stratum` is in the same directory like `/opt/src/`. By default make will search for monero libraries in `../monero`. You can just run `cmake .`.
 
+### MY BUILD
+
+install go:
+  copy go file to /usr/local       or  tar -C /usr/local -xzf go1.15.6.linux-amd64.tar.gz
+
+  /etc/profile 
+  export PATH=$PATH:/usr/local/go/bin
+
+  go version
+
+install build tools:
+  apt install build-essential cmake pkg-config libboost-all-dev libssl-dev libzmq3-dev libunbound-dev libsodium-dev libunwind8-dev liblzma-dev libreadline6-dev libldns-dev libexpat1-dev doxygen graphviz libpgm-dev libhidapi-dev libusb-1.0-0-dev libprotobuf-dev protobuf-compiler libudev-dev
+
+build monero by shared lib:
+  
+
+build bin:
+  MONERO_DIR=/src/monero-shared-src/monero/ cmake .
+
+
 ### Mac OS X
 
 Compile Monero source:
