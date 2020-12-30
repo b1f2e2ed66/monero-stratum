@@ -20,3 +20,5 @@ mainnet.json
 
 /build/_workspace/
 /build/bin/
+
+monero-stratum
