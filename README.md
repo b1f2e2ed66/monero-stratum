@@ -59,7 +59,7 @@ Build stratum:
 install go:
   copy go file to /usr/local       or  tar -C /usr/local -xzf go1.15.6.linux-amd64.tar.gz
 
-  /etc/profile 
+  /etc/profile  (source /etc/profile)
   export PATH=$PATH:/usr/local/go/bin
 
   go version
@@ -71,7 +71,8 @@ build monero by shared lib:
   
 
 build bin:
-  MONERO_DIR=/src/monero-shared-src/monero/ cmake .
+  mkdir cmake_build && cd cmake_build
+  MONERO_DIR=/src/monero-shared-src/monero/ cmake ..
 
 
 ### Mac OS X
