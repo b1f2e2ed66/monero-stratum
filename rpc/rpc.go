@@ -37,6 +37,7 @@ type GetBlockTemplateReply struct {
 	Blob           string `json:"blocktemplate_blob"`
 	ReservedOffset int    `json:"reserved_offset"`
 	PrevHash       string `json:"prev_hash"`
+	SeedHash       string `json:"seed_hash"`
 }
 
 type GetInfoReply struct {

@@ -47,6 +47,7 @@ type JobReply struct {
 type JobReplyData struct {
 	Blob   string `json:"blob"`
 	JobId  string `json:"job_id"`
+	SeedHash string `json:"seed_hash"`
 	Target string `json:"target"`
 }
 

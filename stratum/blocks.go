@@ -16,6 +16,7 @@ type BlockTemplate struct {
 	difficulty     *big.Int
 	reservedOffset int
 	prevHash       string
+	seedHash       string
 	buffer         []byte
 }
 
@@ -55,6 +56,7 @@ func (s *StratumServer) fetchBlockTemplate() bool {
 		difficulty:     big.NewInt(reply.Difficulty),
 		height:         reply.Height,
 		prevHash:       reply.PrevHash,
+		seedHash:       reply.SeedHash,
 		reservedOffset: reply.ReservedOffset,
 	}
 	newTemplate.buffer, _ = hex.DecodeString(reply.Blob)
