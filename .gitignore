@@ -22,3 +22,4 @@ mainnet.json
 /build/bin/
 
 monero-stratum
+go.sum
