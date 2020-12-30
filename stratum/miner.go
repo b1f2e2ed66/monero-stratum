@@ -46,8 +46,8 @@ func (job *Job) submit(nonce string) bool {
 	job.submissions[nonce] = struct{}{}
 	return false
 }
-
 func NewMiner(id string, ip string) *Miner {
+
 	shares := make(map[int64]int64)
 	return &Miner{id: id, ip: ip, shares: shares}
 }
@@ -69,7 +69,7 @@ func (cs *Session) getJob(t *BlockTemplate) *JobReplyData {
 	}
 	job.submissions = make(map[string]struct{})
 	cs.pushJob(job)
-	reply := &JobReplyData{JobId: job.id, Blob: blob, SeedHash: t.seedHash Target: cs.endpoint.targetHex}
+	reply := &JobReplyData{JobId: job.id, Blob: blob, SeedHash: t.seedHash, Target: cs.endpoint.targetHex}
 	return reply
 }
 
