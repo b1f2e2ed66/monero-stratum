@@ -80,7 +80,7 @@ build bin:
   mkdir cmake_build && cd cmake_build
   MONERO_DIR=/src/monero-shared-src/monero/ cmake ..
 
-  go build
+  LD_LIBRARY_PATH=./cmake_build/cnutil:./cmake_build/hashing go build
 
 run :
   copy www/ to /app
