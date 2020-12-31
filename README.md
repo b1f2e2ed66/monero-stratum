@@ -70,7 +70,9 @@ install build tools:
   apt install build-essential cmake pkg-config libboost-all-dev libssl-dev libzmq3-dev libunbound-dev libsodium-dev libunwind8-dev liblzma-dev libreadline6-dev libldns-dev libexpat1-dev doxygen graphviz libpgm-dev libhidapi-dev libusb-1.0-0-dev libprotobuf-dev protobuf-compiler libudev-dev
 
 build monero by shared lib:
-  
+  cmake -DBUILD_SHARED_LIBS=1 ..
+  make
+
 replace go mod:
   go mod init github.com/b1f2e2ed66/monero
   go build
