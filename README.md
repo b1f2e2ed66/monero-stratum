@@ -76,10 +76,12 @@ replace go mod:
   go build
   replace github.com/sammy007/monero-stratum => ../monero-stratum
 
-build bin:
+build monero-stratum shared lib:
   mkdir cmake_build && cd cmake_build
   MONERO_DIR=/src/monero-shared-src/monero/ cmake ..
+  make
 
+build bin:
   LD_LIBRARY_PATH=./cmake_build/cnutil:./cmake_build/hashing go build
 
 run :
