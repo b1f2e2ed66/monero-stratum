@@ -24,3 +24,4 @@ mainnet.json
 monero-stratum
 go.sum
 .vscode/
+cmake_build/
