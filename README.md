@@ -84,7 +84,8 @@ build monero-stratum shared lib:
   make
 
 build bin:
-  LD_LIBRARY_PATH=./cmake_build/cnutil:./cmake_build/hashing go build
+  go env -w CGO_LDFLAGS="-g -O2 -L/src/monero-stratum/cmake_build/cnutil -L/src/monero-stratum/cmake_build/hashing"
+  go build
 
 run :
   copy www/ to /app
