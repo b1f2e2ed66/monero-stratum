@@ -88,6 +88,8 @@ build bin:
   go build
 
 run :
+  docker run -it -p 13531:5555 -p 8082:8082 --name monero_stratum_run_01 monero-stratum:run-latest
+
   copy www/ to /app
   copy config.json to /app
       (http 8082, stratum 13531)
