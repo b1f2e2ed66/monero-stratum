@@ -73,6 +73,8 @@ build monero by shared lib:
   cmake -DBUILD_SHARED_LIBS=1 ..
   make
 
+  copy lib*.so.* to cmake_build
+
 replace go mod:
   go mod init github.com/b1f2e2ed66/monero
   go build
@@ -82,6 +84,8 @@ build monero-stratum shared lib:
   mkdir cmake_build && cd cmake_build
   MONERO_DIR=/src/monero-shared-src/monero/ cmake ..
   make
+
+  get libcnutil.so libhashing.so
 
 build bin:
   go env -w CGO_LDFLAGS="-g -O2 -L/src/monero-stratum/cmake_build/cnutil -L/src/monero-stratum/cmake_build/hashing"
