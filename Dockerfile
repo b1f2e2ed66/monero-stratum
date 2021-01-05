@@ -4,7 +4,7 @@ WORKDIR /go/src/app/monero-stratum
 COPY . .
 COPY cmake_build/lib* /usr/local/lib/
 RUN ldconfig
-RUN go env -w CGO_LDFLAGS="-g -O2 -L./cmake_build -L./cmake_build/cnutil -L./monero-stratum/cmake_build/hashing"
+RUN go env -w CGO_LDFLAGS="-g -O2 -L./cmake_build/cnutil -L./monero-stratum/cmake_build/hashing"
 RUN go build
 
 #final stage
