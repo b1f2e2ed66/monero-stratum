@@ -25,3 +25,5 @@ COPY monero-stratum /app
 COPY config.json /app
 COPY www /app/www
 LABEL Name=monerostratumrun Version=0.0.1
+EXPOSE 13531
+EXPOSE 8082
