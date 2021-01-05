@@ -53,6 +53,8 @@ function refreshStats(statsTemplate, blocksTemplate) {
 			$('.nav-pills > li > #blocksTab').parent().addClass('active');
 		}
 		$('#stats').html(html);
+
+		$('.footer > .container > p > span').text("PoolAddress: " + stats.poolAddress)
 	}).fail(function() {
 		$("#alert").removeClass('hide');
 	});

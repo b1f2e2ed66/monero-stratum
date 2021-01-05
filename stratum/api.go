@@ -23,6 +23,7 @@ func (s *StratumServer) StatsIndex(w http.ResponseWriter, r *http.Request) {
 		"totalOnline": totalOnline,
 		"timedOut":    len(miners) - totalOnline,
 		"now":         util.MakeTimestamp(),
+		"poolAddress": s.config.Address,
 	}
 
 	var upstreams []interface{}
