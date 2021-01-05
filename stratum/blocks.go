@@ -61,5 +61,14 @@ func (s *StratumServer) fetchBlockTemplate() bool {
 	}
 	newTemplate.buffer, _ = hex.DecodeString(reply.Blob)
 	s.blockTemplate.Store(&newTemplate)
+
+	// randomx new seed
+	if !s.config.BypassShareValidation {
+		if s.rx.IsNewSeed(newTemplate.seedHash) {
+			s.rx.RandomxReady = false
+			s.rx.Init(newTemplate.seedHash)
+		}
+	}
+
 	return true
 }

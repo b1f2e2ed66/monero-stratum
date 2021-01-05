@@ -2,10 +2,11 @@ package randomx
 
 import (
 	"encoding/hex"
-	"github.com/ngchain/go-randomx"
 	"log"
 	"runtime"
 	"sync"
+
+	"github.com/ngchain/go-randomx"
 )
 
 // Randomx algo
@@ -13,11 +14,16 @@ type Randomx struct {
 	randomxVM      randomx.VM
 	randomxCache   randomx.Cache
 	randomxDataset randomx.Dataset
-	randomxReady   bool
+	RandomxReady   bool
 	seedHash       string
 }
 
 //if !s.config.BypassShareValidation
+
+// IsNewSeed compare saved seed
+func (r *Randomx) IsNewSeed(seedHash string) bool {
+	return seedHash != r.seedHash
+}
 
 // Init randomx dataset
 func (r *Randomx) Init(seedHash string) error {
@@ -48,8 +54,9 @@ func (r *Randomx) Init(seedHash string) error {
 		if err != nil {
 			return err
 		}
+		log.Println("randomx init dataset start")
 		randomx.InitCache(r.randomxCache, seed)
-		log.Println("rxCache initialization finished")
+		//log.Println("rxCache initialization finished")
 		count := randomx.DatasetItemCount()
 		log.Println("dataset count:", count)
 		//randomx.InitDataset(r.randomxDataset, r.randomxCache, 0, count)
@@ -70,11 +77,7 @@ func (r *Randomx) Init(seedHash string) error {
 		if err != nil {
 			return err
 		}
-
-		input, _ := hex.DecodeString("0c0cfef9cdf505ec28dc29db63e7ff6ca24139a4ab10ffb8b92eb3477abe4978eb425a76b0dabf2d1b00008f80808ff820be93b4e08c2df2bce57a87cfdfa4235d6dd0e52edeba7d6feda209")
-		hashBytes := randomx.CalculateHash(r.randomxVM, input)
-		log.Println("randomx hash test: ", hex.EncodeToString(hashBytes))
-		r.randomxReady = true
+		r.RandomxReady = true
 	}
 
 	return err

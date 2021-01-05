@@ -14,6 +14,7 @@ import (
 	"time"
 
 	"github.com/sammy007/monero-stratum/pool"
+	"github.com/sammy007/monero-stratum/randomx"
 	"github.com/sammy007/monero-stratum/rpc"
 	"github.com/sammy007/monero-stratum/util"
 )
@@ -33,6 +34,7 @@ type StratumServer struct {
 	blocksMu         sync.RWMutex
 	sessionsMu       sync.RWMutex
 	sessions         map[*Session]struct{}
+	rx               randomx.Randomx
 }
 
 type blockEntry struct {
@@ -53,11 +55,11 @@ type Endpoint struct {
 type Session struct {
 	lastBlockHeight int64
 	sync.Mutex
-	conn            *net.TCPConn
-	enc             *json.Encoder
-	ip              string
-	endpoint        *Endpoint
-	validJobs       []*Job
+	conn      *net.TCPConn
+	enc       *json.Encoder
+	ip        string
+	endpoint  *Endpoint
+	validJobs []*Job
 }
 
 const (

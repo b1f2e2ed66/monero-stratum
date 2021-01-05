@@ -16,7 +16,7 @@ import (
 )
 
 type Job struct {
-	height      int64
+	height int64
 	sync.RWMutex
 	id          string
 	extraNonce  uint32
@@ -33,8 +33,8 @@ type Miner struct {
 	rejects       int64
 	shares        map[int64]int64
 	sync.RWMutex
-	id            string
-	ip            string
+	id string
+	ip string
 }
 
 func (job *Job) submit(nonce string) bool {
@@ -152,7 +152,10 @@ func (m *Miner) processShare(s *StratumServer, cs *Session, job *Job, t *BlockTe
 		hashBytes, _ = hex.DecodeString(result)
 	} else {
 		convertedBlob = cnutil.ConvertBlob(shareBuff)
-		hashBytes = hashing.Hash(convertedBlob, false, t.height)
+		//hashBytes = hashing.Hash(convertedBlob, false, t.height)
+		if s.rx.RandomxReady {
+			hashBytes = s.rx.CalcHash(convertedBlob)
+		}
 	}
 
 	if !s.config.BypassShareValidation && hex.EncodeToString(hashBytes) != result {
