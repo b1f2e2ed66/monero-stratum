@@ -33,6 +33,11 @@ function refreshStats(statsTemplate, blocksTemplate) {
 	$.getJSON("/stats", function(stats) {
 		$("#alert").addClass('hide');
 
+		if(stats.current.name == "Test") {
+			$('title').text("Monero TestNet")
+			$('.text-muted').text("Monero TestNet")
+		}
+
 		// Sort miners by ID
 		if (stats.miners) {
 			stats.miners = stats.miners.sort(compareMiners);
